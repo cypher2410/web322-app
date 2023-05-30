@@ -8,7 +8,6 @@
   "name": "web322-app",
   "version": "1.0.0",
   "main": "server.js",
-  "devDependencies": {},
   "author": "Dionysios Balasis",
   "license": "ISC",
   "description": ""
