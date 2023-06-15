@@ -4,7 +4,7 @@
 *  No part of this assignment has been copied manually or electronically from any other source 
 *  (including 3rd party web sites) or distributed to other students.
 * 
-*  Name: Dionysios Balasis Student ID: 104360201 Date: June 15, 2023
+*  Name: Dionysios Balasis Student ID: 104360201 Date: June 16, 2023
 *
 *  Online (Cyclic) Link: https://tame-girdle-clam.cyclic.app
 *
@@ -28,7 +28,7 @@ cloudinary.config({
   secure: true
 });
 
-// Var without disk storage
+// Var without disc storage
 const upload = multer();
 
 //listen port 8080
