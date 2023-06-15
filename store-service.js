@@ -70,3 +70,59 @@ module.exports.getCategories = function(){
         }
     })
 }
+
+//add a new item
+module.exports.addItem = function(itemData){
+    return new Promise((resolve, reject) => {
+        if (itemData.published === undefined) {
+            itemData.published = false;
+        } else {
+            itemData.published = true;
+        }
+        itemData.id = items.length + 1;
+        items.push(itemData);
+        resolve(itemData);
+    })
+}
+
+//items by category function
+module.exports.getItemsByCategory = function (category) {
+    return new Promise((resolve, reject) => {
+        const filteredItems = items.filter(item => item.category == category);
+
+        if (filteredItems.length > 0) {
+            resolve(filteredItems);
+        } else {
+            reject("no results returned");
+        }
+    })
+}
+
+//postDate property represents a Date value that is greater than,
+//or equal to the minDateStr 
+module.exports.getItemsByMinDate = function(minDateStr){
+    return new Promise((resolve, reject) => {
+        const filteredItems = items.filter(item => new Date(item.postDate) >= new Date(minDateStr));
+
+        if (filteredItems.length > 0) {
+            resolve(filteredItems);
+        } else {
+            reject("no results returned");
+        }
+    })
+} 
+
+//find items with ID
+module.exports.getItemById = function (id) {
+    return new Promise((resolve, reject) => {
+        const filteredItems = items.filter(item => item.id == id);
+        const uniqueItem = filteredItems[0];
+
+        if (uniqueItem) {
+            resolve(uniqueItem);
+        }
+        else {
+            reject("no result returned");
+        }
+    })
+}
