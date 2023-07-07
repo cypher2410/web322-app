@@ -79,11 +79,18 @@ module.exports.addItem = function(itemData){
         } else {
             itemData.published = true;
         }
+    
+        // Setting the next item id
         itemData.id = items.length + 1;
+    
+        // Adding to items
         items.push(itemData);
         resolve(itemData);
     })
-}
+    
+};
+
+
 
 //items by category function
 module.exports.getItemsByCategory = function (category) {
@@ -123,6 +130,19 @@ module.exports.getItemById = function (id) {
         }
         else {
             reject("no result returned");
+        }
+    })
+}
+
+//produces items that are both published and filtered by Category
+module.exports.getPublishedItemsByCategory = function (category) {
+    return new Promise((resolve, reject) => {
+        const filteredItems = items.filter(item => item.category == category && item.published === true);
+
+        if (filteredItems.length > 0) {
+            resolve(filteredItems);
+        } else {
+            reject("no results returned");
         }
     })
 }
